@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>Settle Up</h2>
+<div mat-dialog-content>
+  <p>Choose a payment method:</p>
+  <mat-form-field>
+    <mat-label>Payment Method</mat-label>
+    <mat-select [(ngModel)]="selectedPaymentMethod">
+      <mat-option *ngFor="let method of paymentMethods" [value]="method">{{ method }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button color="primary" (click)="onSave()">Save</button>
+</div>

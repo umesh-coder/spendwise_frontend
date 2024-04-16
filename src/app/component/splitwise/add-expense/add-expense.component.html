@@ -1,0 +1,89 @@
+<h2 mat-dialog-title>Add an Expense</h2>
+<form [formGroup]="expenseForm" (ngSubmit)="onSave()">
+  <div mat-dialog-content class="dialog-content">
+    <mat-form-field appearance="outline" class="description-field">
+      <mat-label>Expense Name</mat-label>
+      <input matInput formControlName="expense_name" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="price-field">
+      <mat-label>Price</mat-label>
+      <input matInput type="number" formControlName="price" />
+    </mat-form-field>
+    <div class="form-group">
+      <mat-form-field appearance="outline" class="select-field">
+        <mat-label>Paid by</mat-label>
+        <input matInput formControlName="paid_by" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="select-field">
+        <mat-label>Split</mat-label>
+        <mat-select formControlName="split_type" [(ngModel)]="split_type">
+          <mat-option value="equally">Equally</mat-option>
+          <mat-option value="unequally">Unequally</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div *ngIf="split_type === 'equally'">
+        <button
+          mat-raised-button
+          color="primary"
+          style="padding: 10px"
+          (click)="openEquallySplitDialog()"
+        >
+          Select Participants
+        </button>
+      </div>
+      <div *ngIf="split_type === 'unequally'">
+        <button
+          mat-raised-button
+          color="primary"
+          style="padding: 10px"
+          (click)="openUnEquallySplitDialog()"
+        >
+          Select Participants
+        </button>
+      </div>
+    </div>
+    <mat-form-field appearance="outline" class="category-field">
+      <mat-label>Expense Category</mat-label>
+      <mat-select formControlName="expense_category">
+        <mat-option *ngFor="let item of keywords" [value]="item">{{
+          item
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <h2>(RS {{ calculateExpensePerPerson() }} / Person)</h2>
+    <!-- <mat-form-field appearance="outline" class="date-field" formControlName="expense_date">
+      <mat-label>Date</mat-label>
+      <input matInput type="date" formControlName="date" />
+    </mat-form-field> -->
+
+    <mat-form-field appearance="outline" style="width: 100%">
+      <mat-label>Choose a Expense date</mat-label>
+      <input
+        matInput
+        [max]="maxDate"
+        [matDatepicker]="picker"
+        formControlName="expense_date"
+        (dateChange)="addEvent($event)"
+      />
+      <mat-hint
+        *ngIf="
+          expenseForm.get('expense_date')?.errors &&
+          expenseForm.get('expense_date')?.hasError('required') &&
+          expenseForm.get('expense_date')?.touched
+        "
+        style="color: red"
+      >
+        Expense Date is required
+      </mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions class="dialog-actions">
+    <button mat-button color="warn" (click)="onCancel()">Cancel</button>
+    <button mat-button color="primary" type="submit">Save</button>
+  </div>
+</form>

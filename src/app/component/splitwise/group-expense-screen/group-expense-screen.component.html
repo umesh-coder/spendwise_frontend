@@ -1,0 +1,58 @@
+<div class="bg">
+  <mat-toolbar style="border-bottom: 1px solid black; position: relative;">
+    <span routerLink="/dashboard">Spend Wise 2.0 </span>
+    <span class="example-spacer"></span>
+
+    <button mat-raised-button color="accent" (click)="onLogout()">
+      <mat-icon>logout</mat-icon>Logout
+    </button>
+
+  </mat-toolbar>
+
+  <!-- Left side bar -->
+  <div class="container">
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <h3 style="font-family: Helvetica;font-weight: bold;">Menu</h3>
+        <mat-divider></mat-divider>
+      </div>
+      <ul class="menu-items">
+        <li><button (click)="openGroupDashboard()" mat-raised-button color="primary">Dashboard</button></li>
+        <li><button routerLink="/activity" (click)="openactivity()" mat-raised-button color="primary">Activity</button>
+        </li>
+        <li *ngIf="auid==createdbyid"><button routerLink="/dashboard" (click)="deleteGroup()" mat-raised-button color="danger"
+            style="background-color: red; color: white;">Delete
+            Group</button>
+        </li>
+      </ul>
+      <div class="content">
+        <h3 class="title">Members</h3>
+        <mat-card class="member-card">
+          <mat-card-content>
+            <ul class="member-list">
+              <li *ngFor="let member of groupMembers">{{ member }}</li>
+            </ul>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
+  <div class="group-container">
+    <div class="group-details">
+      <div style="display: flex; flex-direction: row; justify-content: space-between">
+        <h2>{{ groupName }}</h2>
+        <div>
+          <button (click)="openAddExpenseDialog()" mat-raised-button color="accent">Add Expense</button>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <div style="display: flex; flex-direction: row; justify-content: flex-start">
+        <p>Total amount: ${{ totalAmount }}</p>
+        <p>You owe: ${{ amountOwed }}</p>
+        <p>You are owed: ${{ amountOwedToYou }}</p>
+      </div>
+    </div>
+  </div>
+
+</div>

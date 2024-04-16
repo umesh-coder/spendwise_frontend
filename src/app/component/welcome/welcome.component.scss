@@ -1,0 +1,47 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.example-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.example-sidenav {
+    padding-left: 50px;
+    padding-right: 100px;
+    padding-top: 50px;
+}
+
+.btns {
+    position: fixed;
+    bottom: 10%;
+    right: 5%;
+    z-index: 100;
+}
+
+
+
+mat-drawer-container {
+    // background: linear-gradient(-45deg, #ecebeb, rgb(237, 239, 235), #05f040, #23d5ab);
+    // background: linear-gradient(to right, #673AB7, #FFC107);
+    background: linear-gradient(135deg, #fefafb,rgb(167, 246, 179));
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}

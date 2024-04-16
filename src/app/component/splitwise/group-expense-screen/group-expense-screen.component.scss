@@ -1,0 +1,338 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  padding-left: 50px;
+  padding-right: 100px;
+  padding-top: 50px;
+}
+
+.btns {
+  position: fixed;
+  bottom: 10%;
+  right: 5%;
+  z-index: 100;
+}
+
+.social-btns button {
+  color: white;
+  background-color: white;
+}
+
+.side-nav-btn button:hover {
+  transform: scale(1.1);
+  transition: 0.5s;
+}
+
+:host ::ng-deep .p-dialog .product-image {
+  width: 150px;
+  margin: 0 auto 2rem auto;
+  display: block;
+}
+
+.container {
+  display: flex;
+}
+
+// .sidebar {
+//   position: fixed;
+//   display: flex;
+//   left: 0;
+//   width: 305px;
+//   background-color: #f0f0f0;
+//   padding: 20px;
+//   flex-direction: column;
+//   height: 100%;
+// }
+
+.sidebar-header h3 {
+  margin: 0;
+}
+
+.menu-items {
+  list-style-type: none;
+  margin-top: 10px;
+  padding: 0;
+}
+
+.menu-items li {
+  margin-bottom: 10px;
+}
+
+.menu-items li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.content {
+  flex: 1;
+  padding: 10px;
+  flex-wrap: wrap;
+}
+
+// .group-details {
+//   flex-grow: 2;
+//   background-color: #e0e0e0;
+//   padding: 20px;
+//   border-radius: 5px;
+//   margin-left: 20px;
+//   height: auto;
+// }
+
+// .group-details h2 {
+//   margin-top: 0;
+// }
+
+// .group-details div {
+//   margin-top: 10px;
+// }
+
+// .group-details button {
+//   margin-right: 10px;
+// }
+
+// .group-container {
+//   display: flex;
+//   position: relative;
+//   margin-left: auto;
+//   margin-right: 20px;
+//   margin-top: 20px;
+//   width: 79%;
+//   height: 50%;
+// }
+
+p {
+  margin-right: 15px;
+}
+
+.content {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+// .title {
+//   font-weight: bold;
+//   color: #333; /* Adjust color as needed */
+//   margin-bottom: 0;
+// }
+
+// .member-list {
+//   list-style-type: none;
+//   padding: 0;
+//   margin: 0;
+// }
+
+// .member-list li {
+//   margin-bottom: 5px; /* Adjust spacing between members */
+//   font-size: 14px; /* Adjust font size as needed */
+//   color: white; /* Adjust color as needed */
+// }
+
+// .member-list li::before {
+//   // content: "\2022"; /* Use a bullet character */
+//   // color: black; /* Adjust color of bullet */
+//   display: inline-block;
+//   width: 1em;
+//   margin-left: -1em;
+// }
+
+// .member-card {
+//   background-color: #673AB7; /* Change to the desired background color */
+//   margin-top: 10px; /* Adjust margin as needed */
+//   width: auto; /* Adjust width as needed */
+//   border-radius: 8px; /* Adjust border radius as needed */
+// }
+
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  /* Allow items to wrap */
+  max-width: 100%;
+  /* Set maximum width */
+  margin: 0 auto;
+  /* Center align the container */
+}
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  /* Change width to 100% for smaller screens */
+  max-width: 305px;
+  /* Limit maximum width for larger screens */
+  background-color: #f0f0f0;
+  padding: 20px;
+  flex-direction: column;
+  height: auto;
+  /* Change height to auto */
+}
+
+.group-container {
+  display: flex;
+  flex-direction: column;
+  /* Change to column layout for smaller screens */
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  width: 100%;
+  /* Change width to 100% for smaller screens */
+  max-width: 79%;
+  /* Limit maximum width for larger screens */
+}
+
+.group-details {
+  flex-grow: 2;
+  background-color: #e0e0e0;
+  padding: 20px;
+  border-radius: 5px;
+  margin: 20px;
+  /* Add margin for smaller screens */
+}
+
+.group-container button {
+  width: 100%;
+  /* Set button width to 100% for smaller screens */
+  margin-bottom: 10px;
+  /* Add margin-bottom for smaller screens */
+  margin-right: 10px;
+  /* Add margin-right for space between buttons */
+}
+
+/* Style for the menu buttons */
+.menu-items button {
+  width: 100%;
+  /* Set button width to 100% */
+  margin-bottom: 10px;
+  /* Add margin-bottom */
+}
+
+/* Add space between the menu buttons */
+.menu-items button:not(:last-child) {
+  margin-bottom: 20px;
+  /* Increase margin-bottom */
+}
+
+/* Adjust styles for mobile view */
+@media (max-width: 767px) {
+
+  /* Reduce margin-bottom for smaller screens */
+  .menu-items button:not(:last-child) {
+    margin-bottom: 10px;
+    /* Adjust margin-bottom for smaller screens */
+  }
+}
+
+/* Adjust margin for phone view */
+@media (max-width: 767px) {
+  .group-container button {
+    margin-right: 5px;
+    /* Reduce margin-right for smaller screens */
+  }
+}
+
+@media (min-width: 768px) {
+
+  /* Apply styles for screens wider than 768px (tablets and larger) */
+  .sidebar {
+    width: 305px;
+    /* Reset width for tablets and larger screens */
+  }
+
+  .group-container {
+    max-width: calc(100% - 325px);
+    /* Adjust maximum width for tablets and larger screens */
+    margin-left: 325px;
+    /* Adjust margin for tablets and larger screens */
+  }
+}
+
+@media (min-width: 1200px) {
+
+  /* Apply styles for screens wider than 1200px (desktops and larger) */
+  .sidebar {
+    width: 305px;
+    /* Keep width fixed for desktops and larger screens */
+  }
+
+  .group-container {
+    max-width: calc(100% - 325px);
+    /* Adjust maximum width for desktops and larger screens */
+    margin-left: 325px;
+    /* Adjust margin for desktops and larger screens */
+  }
+}
+
+/* Add additional media queries for other screen sizes if needed */
+
+@media (max-width: 767px) {
+
+  /* Apply styles for screens narrower than 768px (mobile devices) */
+  .sidebar {
+    position: static;
+    /* Remove fixed position for smaller screens */
+    width: 100%;
+    /* Set width to 100% for smaller screens */
+  }
+
+  .group-container {
+    order: 1;
+    /* Change order to move below sidebar for smaller screens */
+    margin-top: 0;
+    /* Reset margin-top */
+    margin-bottom: 20px;
+    margin-left: 5px;
+    /* Add margin-bottom for smaller screens */
+  }
+
+  .group-details {
+    margin-left: auto;
+    /* Adjust margin for smaller screens */
+    margin-right: auto;
+    /* Adjust margin for smaller screens */
+    width: 100%;
+    /* Set width to 100% for smaller screens */
+    max-width: 100%;
+    /* Limit maximum width for smaller screens */
+  }
+
+  .group-container button {
+    width: calc(50% - 5px);
+    /* Set button width to 50% minus half of the desired space */
+    margin-bottom: 10px;
+    /* Add margin-bottom */
+    margin-left: 50px;
+    /* Add margin-right for space between buttons */
+  }
+}
+
+
+// backgrounf
+
+.bg {
+  background: linear-gradient(-45deg, #efefd8, #eaffbb, #ffd740, #ffd740);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: 100vh;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}

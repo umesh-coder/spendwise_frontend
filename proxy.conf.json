@@ -1,0 +1,8 @@
+{
+    "/proxy": {
+      "target": "https://generativelanguage.googleapis.com",
+      "secure": false,
+      "changeOrigin": true
+    }
+  }
+  

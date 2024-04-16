@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>Select Participants</h2>
+<div mat-dialog-content>
+  <mat-list>
+    <mat-list-item *ngFor="let participant of participants" class="participant-item">
+      <mat-checkbox [(ngModel)]="participant.selected">{{ participant.name }}</mat-checkbox>
+      <input type="number" [(ngModel)]="participant.amount" placeholder="Enter Amount" class="amount-input">
+    </mat-list-item>
+  </mat-list>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button color="primary" (click)="onSave()">Save</button>
+</div>

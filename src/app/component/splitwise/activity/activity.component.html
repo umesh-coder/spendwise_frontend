@@ -1,0 +1,88 @@
+<div class="card">
+  <p-panel header="History">
+    <ul>
+      <li>
+        <b style="font-size: 20px">{{ groupname }} </b>
+      </li>
+    </ul>
+  </p-panel>
+
+  <!-- [loading]="loading" -->
+
+  <p-table #dt1 [value]="groups" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="[
+      'name',
+      'country.name',
+      'representative.name',
+      'status'
+    ]">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="min-width: 15rem">
+          <div class="flex align-items-center">
+            Your Email
+           
+          </div>
+        </th>
+        <th style="min-width: 15rem">
+          <div class="flex align-items-center">
+            Balance
+           
+          </div>
+        </th>
+
+        <th style="min-width: 10rem">
+          <div class="flex align-items-center">
+            Pay
+           
+          </div>
+        </th>
+        <th style="min-width: 10rem">
+          <div class="flex align-items-center">
+            Status
+           
+          </div>
+        </th>
+       
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage">
+    
+      <tr  *ngFor="let members of member" >
+
+        <td *ngIf="members.member_id==useremail">{{ members.member_id }}</td>
+
+        <td *ngIf="members.member_id==useremail">{{members.shareamount}}</td>
+
+    
+        <td>
+
+          <div *ngIf="members.member_id==useremail && members.status === 'Pending'">
+            <button mat-raised-button color="primary" (click)="openSettleUpDialog(members._id)">Settle Up</button>
+          </div>
+
+          <div *ngIf="members.member_id==useremail && members.status === 'Recieved'">
+            <button mat-raised-button color="accent" >PAID</button>
+          </div>
+        
+        </td>
+
+        <td *ngIf="members.member_id==useremail">
+
+          <p-tag [value]="members.status"  [severity]="getSeverity(members.status)"></p-tag>
+
+        </td>
+
+
+      </tr>
+
+    </ng-template>
+    <!-- <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="7">No customers found.</td>
+      </tr>
+    </ng-template> -->
+  </p-table>
+</div>
