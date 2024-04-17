@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { environment } from '../../enviroments/environment.development';
 @Injectable({
   providedIn: 'root'
 })
 export class ExpensesService {
-  public baseUrl = 'http://localhost:2000/groupExpense';
+  public baseUrl = environment.apiUrl + '/groupExpense';
   constructor(private http: HttpClient) { }
 
 

@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { environment } from '../../enviroments/environment.development';
 
 @Injectable({
   providedIn: 'root',
 })
 export class groupService {
-  private baseUrl = 'http://localhost:2000/group';
+  private baseUrl = environment.apiUrl + '/group';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   createGroup(data: any): Observable<any> {
     // Retrieve the token from local storage
@@ -43,7 +44,7 @@ export class groupService {
     return this.groupNameSubject.asObservable();
   }
 
- 
+
 
   SuggestionsByGemini(data: string): Observable<any> {
     // Construct the request body

@@ -41,9 +41,6 @@ export class AuthService {
 
       const strdate = (date.toString()).substring(0, 16)
 
-      // console.log("date:-" + strdate);
-
-      // console.log("date type " + typeof (strdate));
 
       let body = {
         name: values.name,
@@ -57,7 +54,7 @@ export class AuthService {
 
       console.log("body" + body.userfirstsignupdate);
 
-      this.http.post('http://localhost:2000/auth/signup', body).subscribe(
+      this.http.post(this.apiUrl + '/auth/signup', body).subscribe(
         (res: any) => {
           if (res) {
             this._snackBar.open(
@@ -103,7 +100,7 @@ export class AuthService {
     console.log("body:" + body.email);
 
     return new Promise<boolean>((resolve, reject) => {
-      this.http.post('http://localhost:2000/auth/login', body).subscribe(
+      this.http.post(this.apiUrl + '/auth/login', body).subscribe(
         (res: any) => {
           this._snackBar.open(res.message, '', { duration: 3000 });
           this.token = res.data.token;
@@ -162,7 +159,7 @@ export class AuthService {
       'Authorization': `Bearer ${this.token}`
     });
 
-    this.http.post('http://localhost:2000/expense/savedata', body, { headers }).subscribe((res: any) => {
+    this.http.post(this.apiUrl + '/expense/savedata', body, { headers }).subscribe((res: any) => {
       this._snackBar.open('Spend Wise Account Created SuccessFully', '', { duration: 125000 });
     })
 
@@ -170,14 +167,14 @@ export class AuthService {
 
   getAllSaveData() {
     const userId = localStorage.getItem('Id')?.split(' ')[1];
-    return this.http.get('http://localhost:2000/expense/getsavedata/' + userId);
+    return this.http.get(this.apiUrl + '/expense/getsavedata/' + userId);
   }
 
   updateUserData(id: string, body: any) {
     // let userid=localStorage.getItem('Id')?.split(' ')[1];
     console.log("body:-" + body);
 
-    this.http.post('http://localhost:2000/expense/updatesavedata/' + id, body).subscribe((result) => {
+    this.http.post(this.apiUrl + '/expense/updatesavedata/' + id, body).subscribe((result) => {
       console.log(result);
     })
   }
@@ -188,13 +185,13 @@ export class AuthService {
 
 
 
-    return this.http.post('http://localhost:2000/expense/updateuserdataprofile/' + id, body);
+    return this.http.post(this.apiUrl + '/expense/updateuserdataprofile/' + id, body);
   }
 
   updateWholeInfo(body: any) {
     let id = sessionStorage.getItem('Id')?.split(' ')[1];
 
-    return this.http.post('http://localhost:2000/expense/updatename/' + id, body);
+    return this.http.post(this.apiUrl + '/expense/updatename/' + id, body);
   }
 
   deleteUserAccount() {
@@ -210,7 +207,7 @@ export class AuthService {
 
     console.log("delete id" + id);
 
-    return this.http.delete('http://localhost:2000/auth/delete/' + id, { headers });
+    return this.http.delete(this.apiUrl + '/auth/delete/' + id, { headers });
   }
 
 }

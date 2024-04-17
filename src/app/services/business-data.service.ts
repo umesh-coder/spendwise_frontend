@@ -47,7 +47,7 @@ export class BusinessDataService {
     // console.log("signup local token:-" + token);
 
 
-    return this.http.get('http://localhost:2000/expense/getallexpense/' + this.userid, { headers });
+    return this.http.get(this.apiUrl + '/expense/getallexpense/' + this.userid, { headers });
   }
 
   onCreateExpense(values: any, date: any) {
@@ -73,7 +73,7 @@ export class BusinessDataService {
 
     // console.log("expense body:-" + body.expense_category);
 
-    return this.http.post('http://localhost:2000/expense/createexpense', body, { headers });
+    return this.http.post(this.apiUrl + '/expense/createexpense', body, { headers });
   }
 
 
@@ -101,7 +101,7 @@ export class BusinessDataService {
 
     // console.log("inside import CSV");
 
-    return this.http.post('http://localhost:2000/expense/createexpense', body, { headers });
+    return this.http.post(this.apiUrl + '/expense/createexpense', body, { headers });
   }
 
 
@@ -116,7 +116,7 @@ export class BusinessDataService {
 
 
 
-    return this.http.post('http://localhost:2000/expense/savecategory/' + this.userid, data);
+    return this.http.post(this.apiUrl + '/expense/savecategory/' + this.userid, data);
 
   }
 
@@ -129,7 +129,7 @@ export class BusinessDataService {
     });
 
 
-    return this.http.delete('http://localhost:2000/expense/deleteexepense/' + this.userid + '/' + id, { headers });
+    return this.http.delete(this.apiUrl + '/expense/deleteexepense/' + this.userid + '/' + id, { headers });
   }
 
   onGetSingleExpense(id: string) {
@@ -140,7 +140,7 @@ export class BusinessDataService {
       'Authorization': `Bearer ${token}`
     });
 
-    return this.http.get('http://localhost:2000/expense/getsingleexpense/' + this.userid + '/' + id, { headers });
+    return this.http.get(this.apiUrl + '/expense/getsingleexpense/' + this.userid + '/' + id, { headers });
 
   }
 
@@ -166,14 +166,14 @@ export class BusinessDataService {
       creater: this.userid,
     }
 
-    return this.http.patch('http://localhost:2000/expense/updateexpense/' + this.userid + '/' + id, body, { headers });
+    return this.http.patch(this.apiUrl + '/expense/updateexpense/' + this.userid + '/' + id, body, { headers });
   }
 
   onGetAllCategory() {
     this.userid = sessionStorage.getItem('Id')?.split(' ')[1];
     console.log("category user id " + this.userid);
 
-    return this.http.get('http://localhost:2000/expense/getcategory/' + this.userid);
+    return this.http.get(this.apiUrl + '/expense/getcategory/' + this.userid);
   }
 
   onGithub() {
